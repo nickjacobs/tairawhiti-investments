@@ -1,0 +1,64 @@
+@import url("https://use.typekit.net/zxn4wpp.css");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900
+// thin 100
+// extralight 200
+// light 300
+// regular 400
+// medium 500
+// semibold 600
+// bold 700
+// extrabold 800
+// black 900
+
+body {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "slnt" 0;
+}
+
+
+.nexa {
+    font-family: "nexa-rust-sans-black-2", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+
+$font-headings: "nexa-rust-sans-black-2", sans-serif;
+
+
+
+@mixin font($size,$weight:'r',$lineheight:1.4) {
+    @if $weight == 'l' {
+        $weight: 300;
+    }
+    @if $weight == 'r' {
+        $weight: 400;
+    }
+    @if $weight == 'm' {
+        $weight: 500;
+    }
+    @if $weight == 's' {
+        $weight: 600;
+    }
+    @if $weight == 'b' {
+        $weight: 700;
+    }
+    @if $weight == 'e' {
+        $weight: 800;
+    }
+    @if $weight == 'bl' {
+        $weight: 900;
+    }
+    $size: $size * 1px;
+    font-size: $size;
+    font-size: ($size / 16px) * 1rem;
+    font-weight: $weight;
+    line-height:$lineheight;
+}

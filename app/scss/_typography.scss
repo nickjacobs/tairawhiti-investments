@@ -1,0 +1,35 @@
+h1 {
+    @include font (50,e,60px);
+    letter-spacing: 0;
+}
+h2 {
+    @include font (40,e,60px);
+    letter-spacing: 0;
+}
+h3 {
+    @include font (32,e,42px);
+    letter-spacing: .56px;
+}
+h4 {
+    @include font (24,e,28px);
+    letter-spacing: .47px;
+}
+h5 {
+    @include font (20,e,40px);
+    letter-spacing: .17px;
+}
+h6 {
+    @include font (16,b,20px);
+    letter-spacing: .17px;
+}
+
+.title--small {
+    @include font (16,e,20px);
+    letter-spacing: .17px;
+}
+
+a {
+    color:$body;
+}
+
+

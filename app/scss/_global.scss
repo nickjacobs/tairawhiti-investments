@@ -1,0 +1,90 @@
+
+html {
+    height: 100%;
+}
+
+body {
+    height:100%;
+    background-color: $lightgrey;
+    padding:2rem;
+    color:$body;
+    @include media-breakpoint-down(md) {
+        padding:1rem;
+    }
+}
+main {
+    height:100%;
+}
+
+.page-layout {
+    height:100%
+}
+
+
+
+.padding-top--none {
+    padding-top:0!important;
+}
+.padding-top--sm {
+    padding-top:$padding-sm!important;
+}
+.padding-top--lg {
+    padding-top:$padding-lg!important;
+}
+.padding-bottom--none {
+    padding-bottom: 0 !important;
+}
+.padding-bottom--sm {
+    padding-bottom:$padding-sm!important;
+}
+.padding-bottom--lg {
+    padding-bottom:$padding-lg!important;
+}
+
+
+
+a {
+    transition: color .2s ease-in-out;
+}
+
+
+
+.g-5, .gy-5 {
+    --bs-gutter-y: 2.5rem;
+}
+.gx-5,.g-5 {
+    --bs-gutter-x: 2.5rem;
+}
+.g-6,.gx-6 {
+    --bs-gutter-x: 5rem;
+}
+.g-6, .gy-6 {
+    --bs-gutter-y: 5rem;
+}
+
+.card {
+    box-shadow: 0px 0px 70px 0px rgba(115, 115, 106, 0.1);
+    border-radius: 20px;
+    border: none;
+    background: white;
+    overflow:hidden;
+}
+
+.line-break {display:block;}
+
+
+.radius {border-radius:$sm-radius;}
+
+.debug {
+    @extend .container;
+    padding:.5rem;
+    border:1px dashed coral;
+    //background: repeating-linear-gradient(
+    //        45deg,
+    //        lightpink,
+    //        lightpink 10px,
+    //        coral 10px,
+    //        coral 11px
+    //);
+
+}
