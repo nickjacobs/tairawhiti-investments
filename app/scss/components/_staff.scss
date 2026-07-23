@@ -1,0 +1,64 @@
+.staff-block {
+    padding:$padding-sm 0;
+
+    h2 {
+        margin-bottom:2rem;
+    }
+}
+
+.staff-tiles {
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:2rem;
+
+    @media only screen and (max-width:992px) {
+        grid-template-columns:repeat(2, 1fr);
+    }
+
+    @media only screen and (max-width:480px) {
+        grid-template-columns:1fr;
+    }
+}
+
+.staff-tile {
+    background:$lightgrey;
+    border-radius:$radius;
+    box-shadow:$box-shadow;
+    overflow:hidden;
+    text-align:center;
+    padding:1.5rem;
+
+    &__photo {
+        margin:-1.5rem -1.5rem 1rem;
+
+        img {
+            width:100%;
+            height:auto;
+            aspect-ratio:1;
+            object-fit:cover;
+        }
+    }
+
+    h3 {
+        margin-bottom:0.25rem;
+    }
+
+    &__job-title {
+        font-weight:bold;
+        margin-bottom:0.25rem;
+    }
+
+    &__affiliation {
+        color:rgba($black, 0.6);
+        margin-bottom:0.5rem;
+    }
+
+    &__email a {
+        word-break:break-word;
+    }
+
+    &__bio {
+        text-align:left;
+        margin-top:1rem;
+    }
+}

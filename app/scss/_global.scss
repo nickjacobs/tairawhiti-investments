@@ -1,25 +1,35 @@
-
 html {
     height: 100%;
 }
 
 body {
     height:100%;
-    background-color: $purple;
-    padding:2rem;
-    color:$white;
-    @include media-breakpoint-down(md) {
-        padding:1rem;
-    }
+    color:$body;
+    background:white;
+    margin:0;
+    padding:0;
+
 }
 main {
     height:100%;
 }
 
-.page-layout {
-    height:100%
+.header-banner {
+    background-color: $purple;
+    padding:1rem 2rem 2rem;
 }
 
+.page-layout {
+
+}
+
+.page-content {
+    padding:2rem 0;
+}
+
+.reading-width {
+    max-width:$reading-width;
+}
 
 
 .padding-top--none {

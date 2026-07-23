@@ -7,3 +7,6 @@
 /_resources/
 /public/_resources/
 /node_modules
+/app/.DS_Store
+/app/scss/.DS_Store
+.DS_Store

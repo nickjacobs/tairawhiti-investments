@@ -6,8 +6,11 @@
 <body class="{$ClassName.ShortName.LowerCase} page--{$URLSegment} $PageClass" id="top">
 
 <div class="page-wrapper h-100">
-    <% include Header %>
-    <% include Banner %>
+    <div class="header-banner">
+        <% include Header %>
+        <% include Banner %>
+        <% include PageIntro %>
+    </div>
     <div class="page-layout">
         <!-- start layout -->
             $Layout

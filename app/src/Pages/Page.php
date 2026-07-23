@@ -5,6 +5,7 @@ namespace {
     use SilverStripe\Assets\Image;
     use SilverStripe\AssetAdmin\Forms\UploadField;
     use SilverStripe\CMS\Model\SiteTree;
+    use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
     use SilverStripe\Forms\TextField;
 
     class Page extends SiteTree
@@ -13,6 +14,7 @@ namespace {
             'TeReoTitle' => 'Varchar',
             'BannerTitle' => 'Varchar(255)',
             'BannerTeReoTitle' => 'Varchar(255)',
+            'PageIntro' => 'HTMLText'
         ];
 
         private static $has_one = [
@@ -33,6 +35,11 @@ namespace {
                 'Root.Main',
                 TextField::create('TeReoTitle', 'Te Reo name'),
                 'MenuTitle'
+            );
+
+            $fields->addFieldToTab('Root.Main',
+            HTMLEditorField::create('PageIntro')->setRows(4),
+                'Content'
             );
 
             $fields->addFieldsToTab('Root.Banner', [
