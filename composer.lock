@@ -4,8 +4,57 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9072028ab6d8e3319b8342992c83a85b",
+    "content-hash": "45fe84b73df5456fadac45ac98cce972",
     "packages": [
+        {
+            "name": "axllent/silverstripe-scaled-uploads",
+            "version": "2.3.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axllent/silverstripe-scaled-uploads.git",
+                "reference": "2ea19722291fb739126ea92d79b3ec3bfa851316"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axllent/silverstripe-scaled-uploads/zipball/2ea19722291fb739126ea92d79b3ec3bfa851316",
+                "reference": "2ea19722291fb739126ea92d79b3ec3bfa851316",
+                "shasum": ""
+            },
+            "require": {
+                "silverstripe/framework": "^4.0 || ^5.0 || ^6.0"
+            },
+            "type": "silverstripe-vendormodule",
+            "autoload": {
+                "psr-4": {
+                    "Axllent\\ScaledUploads\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ralph Slooten",
+                    "homepage": "https://www.axllent.org/"
+                }
+            ],
+            "description": "Automatically scale down and rotate uploaded images for Silverstripe",
+            "homepage": "https://github.com/axllent/silverstripe-scaled-uploads",
+            "keywords": [
+                "image",
+                "rotate",
+                "scaled",
+                "silverstripe",
+                "upload",
+                "uploads"
+            ],
+            "support": {
+                "issues": "https://github.com/axllent/silverstripe-scaled-uploads/issues",
+                "source": "https://github.com/axllent/silverstripe-scaled-uploads/tree/2.3.10"
+            },
+            "time": "2026-04-15T03:24:33+00:00"
+        },
         {
             "name": "composer/ca-bundle",
             "version": "1.5.12",
@@ -3548,54 +3597,6 @@
                 "source": "https://github.com/silverstripe/silverstripe-siteconfig/tree/6.1.1"
             },
             "time": "2025-11-05T05:34:10+00:00"
-        },
-        {
-            "name": "silverstripe/startup-theme",
-            "version": "1.0.12",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/silverstripe/startup-theme.git",
-                "reference": "3b4845b9f8f9c60573544eb634b4ade55886997d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/startup-theme/zipball/3b4845b9f8f9c60573544eb634b4ade55886997d",
-                "reference": "3b4845b9f8f9c60573544eb634b4ade55886997d",
-                "shasum": ""
-            },
-            "require": {
-                "silverstripe/framework": ">=5.2"
-            },
-            "type": "silverstripe-theme",
-            "extra": {
-                "expose": [
-                    "css",
-                    "images",
-                    "favicons",
-                    "fonts",
-                    "js"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Silverstripe Supernovas",
-                    "email": "supernovas@silverstripe.com"
-                }
-            ],
-            "description": "Silverstripe Startup theme",
-            "keywords": [
-                "silverstripe",
-                "theme"
-            ],
-            "support": {
-                "issues": "https://github.com/silverstripe/startup-theme/issues",
-                "source": "https://github.com/silverstripe/startup-theme/tree/1.0.12"
-            },
-            "time": "2025-10-21T20:36:06+00:00"
         },
         {
             "name": "silverstripe/supported-modules",
@@ -8025,7 +8026,6 @@
         "silverstripe/login-forms": 0,
         "silverstripe/recipe-cms": 0,
         "silverstripe/recipe-plugin": 0,
-        "silverstripe/startup-theme": 0,
         "silverstripe/vendor-plugin": 0
     },
     "prefer-stable": true,

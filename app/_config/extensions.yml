@@ -1,0 +1,10 @@
+---
+Name: app-extensions
+---
+
+SilverStripe\CMS\Model\RedirectorPage:
+  extensions:
+    - RedirectorPageAnchorExtension
+SilverStripe\ORM\FieldType\DBField:
+  extensions:
+    - Helper

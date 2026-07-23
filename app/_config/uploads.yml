@@ -1,0 +1,15 @@
+---
+Name: app-scaled-uploads
+---
+
+
+
+Axllent\ScaledUploads\ScaledUploads:
+  max_width: 960 # default maximum width - default 960
+  max_height: 800 # default maximum height - default 800
+
+  custom_folders:
+    Banners: # custom folder path and configuration
+      max_width: 2400
+      max_height: 1200
+

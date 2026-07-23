@@ -7,6 +7,7 @@
 
 <div class="page-wrapper h-100">
     <% include Header %>
+    <% include Banner %>
     <div class="page-layout">
         <!-- start layout -->
             $Layout

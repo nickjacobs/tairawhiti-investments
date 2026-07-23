@@ -5,9 +5,9 @@ html {
 
 body {
     height:100%;
-    background-color: $lightgrey;
+    background-color: $purple;
     padding:2rem;
-    color:$body;
+    color:$white;
     @include media-breakpoint-down(md) {
         padding:1rem;
     }
