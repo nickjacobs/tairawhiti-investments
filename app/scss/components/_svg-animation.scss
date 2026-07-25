@@ -1,0 +1,54 @@
+.svg-wrapper {
+    display:flex;
+    gap:80px;
+    width:800px;
+    margin :0 auto;
+    height:500px;
+
+    .svg-images {
+        width:270px;
+        height:356px;
+        position:relative;
+        flex-shrink:0;
+        top:60px;
+
+        .svg-image {
+            position:absolute;
+            width:270px;
+            svg {top:0;}
+            &.svg-image-1 {
+                top:0;
+                height:197px;
+            }
+            &.svg-image-2 {
+                top:123px;
+                height:103px;
+            }
+            &.svg-image-3 {
+                top:149px;
+                height:204px;
+            }
+
+        }
+    }
+
+    .svg-texts {
+        position:relative;
+        width:100%;
+    }
+    .svg-text {
+        padding:1rem 0;
+        position:absolute;
+        left:0;
+        font-size:16px;
+    }
+    .svg-text1 {
+        top:0;
+    }
+    .svg-text2 {
+        top:150px;
+    }
+    .svg-text3 {
+        top:330px;
+    }
+}

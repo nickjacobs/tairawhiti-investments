@@ -30,6 +30,7 @@ const paths = {
             'node_modules/hls.js/dist/hls.min.js',
             // 'node_modules/gsap/dist/all.js',
             'node_modules/gsap/dist/gsap.js',
+            'node_modules/gsap/dist/ScrollTrigger.js',
             // 'node_modules/gsap/dist/DrawSVGPlugin.js',
             // 'node_modules/gsap/dist/MorphSVGPlugin.js',
             // 'node_modules/gsap/dist/CustomEase.js',

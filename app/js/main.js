@@ -92,3 +92,63 @@ $(function() {
 }); // end of document ready
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    const wrapper = document.querySelector('.svg-images');
+
+    if (!wrapper) {
+        return;
+    }
+
+    // Each element is now its own wrapper div with a self-contained <svg>,
+    // absolutely positioned to recreate the assembled logo - animate the
+    // wrapper, not the shapes inside it (their own <svg> viewBox is sized
+    // tight to their content, so moving them internally just clips them).
+    const element1 = wrapper.querySelector('.svg-image-1');
+    const element2 = wrapper.querySelector('.svg-image-2');
+    const element3 = wrapper.querySelector('.svg-image-3');
+
+    const text1 = document.querySelector('.svg-text1');
+    const text2 = document.querySelector('.svg-text2');
+    const text3 = document.querySelector('.svg-text3');
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.set([text1, text2, text3], { opacity: 0 });
+    gsap.set([element1, element2, element3], { opacity: 1, y: 0 });
+
+    const tl = gsap.timeline({
+        defaults: { duration: 0.8, ease: 'power2.out' },
+        scrollTrigger: {
+            trigger: wrapper,
+            start: 'top 80%',
+            // Restart from the beginning every time it scrolls into view,
+            // whether that's scrolling down onto it or back up onto it.
+            toggleActions: 'restart none restart none',
+        },
+    });
+
+    // .svg-image-1/.svg-image-2 overlap by ~74px at rest, and .svg-image-2/
+    // .svg-image-3 overlap by ~77px - offset must clear both with room to
+    // spare or the pieces still collide mid-animation.
+    tl.to(element1, { y: -80 }, 'split')
+        .to(element3, { y: 100 }, 'split');
+
+    tl.to([element2, element3], { opacity: 0.6 }, 'reveal1')
+        .to(text1, { opacity: 1 }, 'reveal1');
+
+    tl.to({}, { duration: 1 });
+
+    tl.to([element1, element3], { opacity: 0.6 }, 'reveal2')
+        .to(element2, { opacity: 1 }, 'reveal2')
+        .to(text2, { opacity: 1 }, 'reveal2');
+
+    tl.to({}, { duration: 1 });
+
+    tl.to([element1, element2], { opacity: 0.6 }, 'reveal3')
+        .to(element3, { opacity: 1 }, 'reveal3')
+        .to(text3, { opacity: 1 }, 'reveal3');
+
+    tl.to({}, { duration: 1 });
+
+    tl.to([element1, element2, element3], { y: 0, opacity: 1 }, 'converge');
+});
