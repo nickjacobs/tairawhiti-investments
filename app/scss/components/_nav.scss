@@ -1,36 +1,88 @@
+$nav-top-size:1rem;
+
 .site-header {
     margin-bottom:1rem;
     .navbar-brand {
         color:white;
         .site-logo {
-            width:300px;
-            height:90px;
+            width:260px;
+            height:100px;
             svg {
                 width:auto;
                 height:auto;
                 max-height:100%;
+                transition: transform 0.4s $transition-ease;
+                &:hover {
+                    transform:scale(1.025);
+                }
             }
+
         }
     }
     .navbar-nav {
         gap:4rem;
         .nav-link {
+            font-size:$nav-top-size;
             color:white;
             display:flex;
             flex-direction:column;
+            transition: color .4s $transition-ease;
+            &.top-level {
+                font-weight:600;
+            }
             &:after {
                 width: 10px;
+                margin-left:0;
+                margin-top:6px;
+            }
+            &:hover {
+                color:$brand-highlight;
             }
         }
     }
-    .nav-link-tereo, .dropdown-item .nav-link-tereo {
+    .nav-link-tereo {
         display:block;
-        font-size:0.9rem;
-        font-weight:normal;
+        font-size:$nav-top-size;
         opacity:0.75;
+        font-weight:600;
+    }
+    // The dropdown toggle link is a normal, clickable link (see Navigation.ss -
+    // no data-bs-toggle="dropdown"), so Bootstrap's JS never adds/removes .show.
+    // Visibility is CSS-only instead: hover on desktop (floating menu), always
+    // open on mobile (stacked list, since there's no hover on touch).
+    .dropdown-menu {
+        display:none;
+        background-color:$brand-purple;
+        border-radius: 0;
+    }
+
+    @media (min-width:992px) {
+        .dropdown:hover > .dropdown-menu {
+            display:block;
+        }
+    }
+
+    @media (max-width:991.98px) {
+        .dropdown-menu {
+            display:block;
+            position:static;
+            background:transparent;
+            border:0;
+            box-shadow:none;
+            padding-left:1rem;
+        }
     }
     .dropdown-item {
         display:flex;
         flex-direction:column;
+        color:white;
+        &:hover, &:focus {
+            background-color:rgba(255,255,255,0.1);
+            color:$brand-highlight;
+        }
+        &.active, &:active {
+            background-color:rgba(255,255,255,0.1);
+            color:$brand-highlight;
+        }
     }
 }

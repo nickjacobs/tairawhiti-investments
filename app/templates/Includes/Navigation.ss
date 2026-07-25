@@ -9,7 +9,7 @@
         <% loop $Menu(1) %>
             <% if $Children %>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle <% if $isCurrent || $isSection %> active<% end_if %>" href="$Link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link top-level dropdown-toggle <% if $isCurrent || $isSection %> active<% end_if %>" href="$Link">
                         $MenuTitle
                         <% if $TeReoTitle %><span class="nav-link-tereo">$TeReoTitle</span><% end_if %>
                     </a>
@@ -18,7 +18,6 @@
                             <li>
                                 <a class="dropdown-item <% if $isCurrent || $isSection %> active<% end_if %>" href="$Link">
                                     $MenuTitle
-                                    <% if $TeReoTitle %><span class="nav-link-tereo">$TeReoTitle</span><% end_if %>
                                 </a>
                             </li>
                         <% end_loop %>
@@ -26,7 +25,7 @@
                 </li>
             <% else %>
                 <li class="nav-item">
-                    <a class="nav-link $IsCurrentOrSection.Nice <% if $isCurrent || $isSection %> active<% end_if %>" href="$Link"<% if $isCurrent || $isSection %> aria-current="page"<% end_if %>>
+                    <a class="nav-link top-level $IsCurrentOrSection.Nice <% if $isCurrent || $isSection %> active<% end_if %>" href="$Link"<% if $isCurrent || $isSection %> aria-current="page"<% end_if %>>
                         $MenuTitle
                         <% if $TeReoTitle %><span class="nav-link-tereo">$TeReoTitle</span><% end_if %>
                     </a>

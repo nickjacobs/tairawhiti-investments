@@ -12,6 +12,7 @@ namespace {
 
         private static $db = [
             'Title' => 'Varchar(255)',
+            'Layout' => "Enum('Stacked,Horizontal','Stacked')",
         ];
 
         private static $has_one = [
@@ -34,7 +35,7 @@ namespace {
             $fields->removeByName(['StaffPageID', 'Staff']);
 
             $fields->insertAfter(
-                'Title',
+                'Layout',
                 GridField::create(
                     'Staff',
                     'Staff',

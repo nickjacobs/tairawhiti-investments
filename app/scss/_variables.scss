@@ -1,22 +1,22 @@
 $black :#000;
 $white: #fff;
-$purple: #1c0f33;
 
-$body: $black;
 
-$dark-blue: #0C1C36;
 $lightgrey: #F8F9FA;
 
 
-$highlight: #EDB12E;
+/*  theme colours  */
+$brand-purple: #1c0f33;
+$brand-blue: #027EA6;
+$brand-yellow: #F9D132;
+$brand-orange: #F7933F;
+$brand-pink: #E83B90;
+$brand-red: #F32C3B;
 
-$bluetint:#CBE3FA;
-$bluetint2:#EEF7FF;
-
-$sand: #FDF5E5;
+$brand-highlight: $brand-orange;
 
 
-$tag-text: $highlight;
+$body: $brand-purple;
 
 $padding-sm: 60px;
 $padding: 120px;
@@ -29,12 +29,15 @@ $radius: 10px;
 $md-radius: 12px;
 $sm-radius: 8px;
 
+$box-shadow: 0px 0px 30px 0px rgba(115, 115, 106, 0.25);
 
-$box-shadow: 0px 0px 70px 0px rgba(115, 115, 106, 0.10);
 
 $banner-height: 500px;
 
-$reading-width: 940px;
+$reading-width: 840px;
+$reading-width-lg: 990px;
+
+$transition-ease: cubic-bezier(0.76, 0, 0.24, 1);
 
 
 

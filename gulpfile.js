@@ -27,6 +27,7 @@ const paths = {
             // Libs — order matters
             'node_modules/jquery/dist/jquery.js',
             'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
+            'node_modules/hls.js/dist/hls.min.js',
             // 'node_modules/gsap/dist/all.js',
             'node_modules/gsap/dist/gsap.js',
             // 'node_modules/gsap/dist/DrawSVGPlugin.js',

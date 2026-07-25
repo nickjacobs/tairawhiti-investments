@@ -7,9 +7,12 @@
 }
 
 .staff-tiles {
+    position:relative;
     display:grid;
     grid-template-columns:repeat(3, 1fr);
+    grid-auto-rows:auto auto 1fr;
     gap:2rem;
+    font-size:1rem;
 
     @media only screen and (max-width:992px) {
         grid-template-columns:repeat(2, 1fr);
@@ -21,11 +24,14 @@
 }
 
 .staff-tile {
-    background:$lightgrey;
-    border-radius:$radius;
+    display:grid;
+    grid-template-rows:subgrid;
+    grid-row:span 3;
+    background:$brand-purple;
+    border-radius:0;
     box-shadow:$box-shadow;
     overflow:hidden;
-    text-align:center;
+    text-align:left;
     padding:1.5rem;
 
     &__photo {
@@ -38,27 +44,183 @@
             object-fit:cover;
         }
     }
+    &__body {
+        display:grid;
+        grid-template-rows:subgrid;
+        grid-row:span 2;
+        color:white;
+    }
 
     h3 {
-        margin-bottom:0.25rem;
+        margin-bottom:0.5rem;
+        font-size:1.5rem;
+        line-height:1;
     }
 
     &__job-title {
         font-weight:bold;
-        margin-bottom:0.25rem;
+        font-size:1.2rem;
+        margin-bottom:0.5rem;
+        line-height:1;
     }
 
     &__affiliation {
-        color:rgba($black, 0.6);
+        font-style:italic;
         margin-bottom:0.5rem;
+        line-height:1;
     }
 
     &__email a {
+        display:inline-flex;
+        align-items:center;
+        gap:0.5rem;
         word-break:break-word;
+        color:white;
+        text-decoration:none;
+        margin-top:6px;
+    }
+
+    &__email-icon {
+        display:inline-flex;
+        flex:0 0 auto;
+        align-items:center;
+        justify-content:center;
+        width:1.75rem;
+        height:1.75rem;
+        border-radius:50%;
+        background:#524c73;
+        transition: all .4s $transition-ease;
+        svg {
+            width:60%;
+            height:60%;
+            fill:white;
+        }
+        &:hover {
+            background:white;
+            transform: scale(1.2);
+            svg {
+                fill: #524c73;
+            }
+        }
+    }
+
+    &__bio-toggle {
+        display:inline-flex;
+        align-items:center;
+        margin-top:0;
+        padding:0;
+        background:none;
+        border:0;
+    }
+
+    &__bio-toggle-icon {
+        display:inline-flex;
+        flex:0 0 auto;
+        align-items:center;
+        justify-content:center;
+        width:1.75rem;
+        height:1.75rem;
+        border-radius:50%;
+        border:1px solid $brand-highlight;
+        color:white;
+        font-size:1.1rem;
+        line-height:1;
+        transition:transform .2s $transition-ease;
+    }
+
+    &__bio-toggle[aria-expanded="true"] &__bio-toggle-icon {
+        transform:rotate(45deg);
     }
 
     &__bio {
         text-align:left;
-        margin-top:1rem;
+        margin-top:0.5rem;
+    }
+}
+
+.staff-row-bio {
+    // Positioned out of normal flow so it overlays whatever sits below it in the
+    // grid, instead of pushing it down - nothing in the page's layout height
+    // changes when it opens/closes, so there's nothing to jump.
+    position:absolute;
+    left:0;
+    right:0;
+    z-index:5;
+    background:$brand-purple;
+    color:white;
+    text-align:left;
+    box-shadow:$box-shadow;
+
+    // Points back up at whichever tile was clicked - JS sets --staff-bio-arrow-left
+    // to that tile's horizontal center. Height must match STAFF_BIO_GAP in
+    // main.js so the tip reaches all the way up to touch the tile above -
+    // width can differ, purely visual.
+    $triangle-size:20px;
+
+    &:before {
+        content:'';
+        position:absolute;
+        top:-$triangle-size;
+        left:var(--staff-bio-arrow-left, 50%);
+        transform:translateX(-50%);
+        width:0;
+        height:0;
+        border-left:$triangle-size solid transparent;
+        border-right:$triangle-size solid transparent;
+        border-bottom:$triangle-size solid $brand-purple;
+        // box-shadow would shadow the invisible 0x0 box this triangle is built
+        // from rather than its visible shape, so use drop-shadow instead - same
+        // values as $box-shadow (its spread is 0, so nothing is lost).
+        filter:drop-shadow(0px 0px 30px rgba(115, 115, 106, 0.25));
+    }
+
+    &__inner {
+        padding:2rem;
+    }
+}
+
+.staff-block--horizontal {
+    .staff-tiles {
+        grid-template-columns:1fr;
+    }
+
+    .staff-tile {
+        display:flex;
+        align-items:center;
+        text-align:left;
+
+        &__photo {
+            flex:0 0 33.333%;
+            aspect-ratio:1;
+            margin:-1.5rem 1.5rem -1.5rem -1.5rem;
+
+            img {
+                width:100%;
+                height:100%;
+                aspect-ratio:auto;
+                object-fit:cover;
+            }
+        }
+
+        &__body {
+            flex:1;
+        }
+
+        @media only screen and (max-width:480px) {
+            flex-direction:column;
+            text-align:center;
+
+            &__photo {
+                flex-basis:auto;
+                aspect-ratio:auto;
+                margin:-1.5rem -1.5rem 1rem;
+
+                img {
+                    width:100%;
+                    height:auto;
+                    aspect-ratio:1;
+                }
+            }
+        }
     }
 }

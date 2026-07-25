@@ -5,7 +5,7 @@
 </head>
 <body class="{$ClassName.ShortName.LowerCase} page--{$URLSegment} $PageClass" id="top">
 
-<div class="page-wrapper h-100">
+<div class="page-wrapper">
     <div class="header-banner">
         <% include Header %>
         <% include Banner %>

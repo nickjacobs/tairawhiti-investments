@@ -4,10 +4,11 @@ html {
 
 body {
     height:100%;
-    color:$body;
+    color:$brand-purple;
     background:white;
     margin:0;
     padding:0;
+    font-size:1.15rem;
 
 }
 main {
@@ -15,12 +16,13 @@ main {
 }
 
 .header-banner {
-    background-color: $purple;
+    background-color: $brand-purple;
     padding:1rem 2rem 2rem;
 }
 
 .page-layout {
-
+    padding-top:6rem;
+    padding-bottom:6rem;
 }
 
 .page-content {
@@ -29,6 +31,9 @@ main {
 
 .reading-width {
     max-width:$reading-width;
+}
+.reading-width--lg {
+    max-width:$reading-width-lg;
 }
 
 
@@ -54,7 +59,7 @@ main {
 
 
 a {
-    transition: color .2s ease-in-out;
+    transition: color .6s $transition-ease;
 }
 
 
