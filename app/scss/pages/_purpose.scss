@@ -1,4 +1,12 @@
 .purposepage {
+    .content-row {
+        grid-template-columns:3fr 2fr;
+    }
+
+    .content-column {
+        grid-column:span 1;
+    }
+
     .details-panel__body {
         .p-highlight {
             width:180px;

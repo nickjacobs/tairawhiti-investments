@@ -10,4 +10,4 @@ use SilverStripe\VersionedAdmin\ArchiveAdmin;
 CMSMenu::remove_menu_class(CampaignAdmin::class);
 CMSMenu::remove_menu_class(ReportAdmin::class);
 //CMSMenu::remove_menu_class(SecurityAdmin::class);
-CMSMenu::remove_menu_class(ArchiveAdmin::class);
+//CMSMenu::remove_menu_class(ArchiveAdmin::class);
