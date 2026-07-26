@@ -1,0 +1,26 @@
+.aboutpage {
+    .page-layout {
+        padding:0;
+    }
+    .aboutpage-content {
+        background:$brand-purple;
+        color:white;
+        position:relative;
+        padding-bottom:4rem;
+        &:after {
+            display: block;
+            position: absolute;
+            bottom: -36px;
+            right: 60px;
+            z-index: 10;
+            width: 214px;
+            height: 37px;
+            pointer-events: none;
+            content: "";
+            background: url(/images/border-deco-top.svg) no-repeat!important;
+        }
+    }
+
+
+
+}

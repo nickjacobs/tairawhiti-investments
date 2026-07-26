@@ -2,10 +2,14 @@
 
 namespace {
 
+    use Bummzack\SortableFile\Forms\SortableUploadField;
     use SilverStripe\Assets\Image;
     use SilverStripe\AssetAdmin\Forms\UploadField;
     use SilverStripe\Forms\FieldList;
+    use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
     use SilverStripe\Forms\TextareaField;
+    use SilverStripe\LinkField\Form\LinkField;
+    use SilverStripe\LinkField\Models\Link;
 
     class PortfolioPage extends Page
     {
@@ -20,36 +24,51 @@ namespace {
         private static $allowed_children = 'none';
 
         private static $db = [
-            'Summary' => 'Text',
+            'Performance' => 'HTMLText'
         ];
 
         private static $has_one = [
             'Logo' => Image::class,
-            'FeaturedImage' => Image::class,
+            'FindOutMoreLink' => Link::class,
+        ];
+
+        private static $many_many = [
+            'FeaturedImages' => Image::class,
+        ];
+
+        private static $many_many_extraFields = [
+            'FeaturedImages' => ['SortOrder' => 'Int'],
         ];
 
         private static $owns = [
-            'FeaturedImage','Logo'
+            'Logo',
+            'FeaturedImages',
+            'FindOutMoreLink',
+        ];
+
+        private static $cascade_deletes = [
+            'FindOutMoreLink',
+        ];
+
+        private static $cascade_duplicates = [
+            'FindOutMoreLink',
         ];
 
         public function getCMSFields()
         {
             $this->beforeUpdateCMSFields(function (FieldList $fields) {
-                $fields->addFieldToTab(
-                    'Root.Main',
-                    TextareaField::create('Summary', 'Summary')
-                        ->setDescription('A short summary shown when this item is listed on the portfolio holder page'),
-                    'Content'
-                );
 
                 $fields->addFieldsToTab(
                     'Root.Main',
                     [
                         UploadField::create('Logo', 'Logo')->setFolderName('Portfolio'),
-                        UploadField::create('FeaturedImage', 'Featured image')->setFolderName('Portfolio')
+                        SortableUploadField::create('FeaturedImages', 'Featured images')->setFolderName('Portfolio'),
+                        LinkField::create('FindOutMoreLink', 'Find out more link'),
                     ],
                     'Content'
                 );
+
+                $fields->addFieldToTab('Root.Main',HTMLEditorField::create('Performance', 'Performance')->setRows(8)->addExtraClass('stacked'),'Metadata');
             });
 
             return parent::getCMSFields();

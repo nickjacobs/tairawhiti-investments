@@ -20,6 +20,11 @@ main {
     padding:1rem 2rem 2rem;
 }
 
+
+section.bg-colour {
+    background-color:$brand-purple;
+    color:white;
+}
 .page-layout {
     padding-top:6rem;
     padding-bottom:6rem;
@@ -27,6 +32,30 @@ main {
 
 .page-content {
     padding:2rem 0;
+}
+
+
+a.outline-link {
+    text-decoration: none;
+    transition:color .2s $transition-ease;
+    display:inline-block;
+    padding:0 1.5rem;
+    background:transparent;
+    border:2px solid $body;
+    border-radius:10em;
+    color:$body;
+    font-weight:bold;
+    cursor:pointer;
+    margin:1rem 0 2rem;
+
+}
+
+
+
+
+
+.reading-width--sm {
+    max-width:$reading-width-sm;
 }
 
 .reading-width {

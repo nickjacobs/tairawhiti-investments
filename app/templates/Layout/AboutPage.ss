@@ -1,4 +1,25 @@
+<section class="aboutpage-content">
+    <div class="container">
+        <% if $Content %>
+            <div class="page-content text-center">
+                <div class="reading-width typ mx-auto">
+                    $Content
+                </div>
+            </div>
+        <% end_if %>
+    </div>
+</section>
+
+
 <div class="container">
+
+
+    <div class="tohu-text reading-width--sm mx-auto text-center">
+        <h3>The Hikitai tohu</h3>
+        <p>This brings together three distinct elements to form one singular identity for <br>Tairāwhiti Investments, uniting people, place and purpose.</p>
+    </div>
+
+
 <div class="svg-wrapper">
     <div class="svg-images">
         <div id="Element1" class="svg-image svg-image-1">

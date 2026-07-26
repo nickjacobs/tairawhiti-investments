@@ -72,7 +72,15 @@ namespace {
             return $fields;
         }
 
-        public function getBannerTitle()
+        /**
+         * The banner title to display, falling back to the page title. Deliberately
+         * not named getBannerTitle() - that would shadow the BannerTitle db field on
+         * magic property access, which the CMS form uses to populate the field's
+         * value. That would pre-fill the (blank) field with the fallback whenever
+         * the form loads, and saving without touching it would write that fallback
+         * in permanently instead of leaving it blank.
+         */
+        public function getBannerTitleForDisplay()
         {
             return $this->getField('BannerTitle') ?: $this->Title;
         }

@@ -12,7 +12,8 @@
         "silverstripe/htmleditor-tinymce": "~1.1.0@stable",
         "axllent/silverstripe-scaled-uploads": "^2.3",
         "jonom/focuspoint": "^6.0",
-        "silverstripe/linkfield": "^5.2"
+        "silverstripe/linkfield": "^5.2",
+        "bummzack/sortablefile": "^3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^11.3"
