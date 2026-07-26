@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container contact-container">
 
 
     <div class="row">
