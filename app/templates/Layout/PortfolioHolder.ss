@@ -39,7 +39,7 @@
                     <% end_if %>
 
                     <div class="content-row">
-                        <div class="content-column">
+                        <div class="content-column typ">
                             $Content
                         </div>
                         <div class="content-sidebar">
