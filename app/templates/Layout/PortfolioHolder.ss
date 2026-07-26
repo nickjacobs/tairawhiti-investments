@@ -41,13 +41,13 @@
                         </div>
                     <% end_if %>
 
-                    <div class="portfolio-content-row">
-                        <div class="portfolio-content">
+                    <div class="content-row">
+                        <div class="content-column">
                             $Content
                         </div>
-                        <div class="portfolio-sidebar">
-                            <div class="portfolio-details-col">
-                                <div class="portfolio__performance">
+                        <div class="content-sidebar">
+                            <div class="details-panel">
+                                <div class="details-panel__body">
                                     $Performance
                                 </div>
                             </div>
