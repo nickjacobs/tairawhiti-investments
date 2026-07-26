@@ -24,30 +24,36 @@
     transition:background .2s $transition-ease, border-color .2s $transition-ease, color .2s $transition-ease;
     cursor:pointer;
 
+    // Arrow rendered as a masked pseudo-element (rather than an inline <svg>)
+    // so the class works standalone on any link, including ones typed
+    // straight into an HTMLEditorField.
+    &:after {
+        content:"";
+        display:inline-block;
+        flex:0 0 auto;
+        width:1rem;
+        height:1rem;
+        background-color:currentColor;
+        -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='m506.134 241.843-.018-.019-104.504-104c-7.829-7.791-20.492-7.762-28.285.068s-7.762 20.492.067 28.284L443.558 236H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h423.557l-70.162 69.824c-7.829 7.792-7.859 20.455-.067 28.284 7.793 7.831 20.457 7.858 28.285.068l104.504-104 .018-.019c7.833-7.818 7.808-20.522-.001-28.314'/%3E%3C/svg%3E");
+        mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='m506.134 241.843-.018-.019-104.504-104c-7.829-7.791-20.492-7.762-28.285.068s-7.762 20.492.067 28.284L443.558 236H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h423.557l-70.162 69.824c-7.829 7.792-7.859 20.455-.067 28.284 7.793 7.831 20.457 7.858 28.285.068l104.504-104 .018-.019c7.833-7.818 7.808-20.522-.001-28.314'/%3E%3C/svg%3E");
+        -webkit-mask-repeat:no-repeat;
+        mask-repeat:no-repeat;
+        -webkit-mask-size:contain;
+        mask-size:contain;
+        transition:margin-left .2s $transition-ease, transform .2s $transition-ease;
+    }
+
     &:hover {
         background:transparent;
         border-color:$brand-highlight!important;
         color:$brand-highlight!important;
 
-        .pill-link__arrow {
+        &:after {
             margin-left:.25rem;
         }
     }
-}
 
-.pill-link__arrow {
-    display:inline-flex;
-    align-items:center;
-    margin-left:0;
-    transition:margin-left .2s $transition-ease, transform .2s $transition-ease;
-
-    svg {
-        width:1rem;
-        height:1rem;
-        fill:currentColor;
-    }
-
-    &--down {
+    &--down:after {
         transform:rotate(90deg);
     }
 }
