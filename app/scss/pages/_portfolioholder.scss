@@ -86,10 +86,10 @@
             font-size:14px;
             text-transform: uppercase;
             line-height:1.1;
-            opacity:.8;
+            opacity:1;
             color:$brand-yellow;
         }
-        p{opacity:.8;}
+        p{opacity:.9;}
         p:has(.p-highlight) {opacity:1}
 
         .p-highlight {
