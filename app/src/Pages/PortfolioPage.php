@@ -5,7 +5,6 @@ namespace {
     use Bummzack\SortableFile\Forms\SortableUploadField;
     use SilverStripe\Assets\Image;
     use SilverStripe\AssetAdmin\Forms\UploadField;
-    use SilverStripe\Forms\FieldList;
     use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
     use SilverStripe\Forms\TextareaField;
     use SilverStripe\LinkField\Form\LinkField;
@@ -56,22 +55,37 @@ namespace {
 
         public function getCMSFields()
         {
-            $this->beforeUpdateCMSFields(function (FieldList $fields) {
+            // Page::getCMSFields() adds PageIntro via a plain addFieldToTab() call of
+            // its own, not through the updateCMSFields hook - removing it from inside
+            // beforeUpdateCMSFields() fired too early (before Page had added it back
+            // in), so it never actually disappeared. Removing after parent::getCMSFields()
+            // has fully run guarantees it's gone.
+            $fields = parent::getCMSFields();
 
-                $fields->addFieldsToTab(
-                    'Root.Main',
-                    [
-                        UploadField::create('Logo', 'Logo')->setFolderName('Portfolio'),
-                        SortableUploadField::create('FeaturedImages', 'Featured images')->setFolderName('Portfolio'),
-                        LinkField::create('FindOutMoreLink', 'Find out more link'),
-                    ],
-                    'Content'
-                );
+            $fields->removeByName('PageIntro');
 
-                $fields->addFieldToTab('Root.Main',HTMLEditorField::create('Performance', 'Performance')->setRows(8)->addExtraClass('stacked'),'Metadata');
-            });
+            $fields->addFieldsToTab(
+                'Root.Main',
+                [
+                    UploadField::create('Logo', 'Logo')->setFolderName('Portfolio'),
+                    SortableUploadField::create('FeaturedImages', 'Featured images')->setFolderName('Portfolio'),
+                    LinkField::create('FindOutMoreLink', 'Find out more link'),
+                ],
+                'Content'
+            );
 
-            return parent::getCMSFields();
+            $fields->addFieldToTab('Root.Main', HTMLEditorField::create('Performance', 'Performance')->setRows(8)->addExtraClass('stacked'), 'Metadata');
+
+            return $fields;
+        }
+
+        /**
+         * PageIntro isn't editable on this page type (see getCMSFields above) - override
+         * the accessor too so any legacy/inherited value never renders on the front end.
+         */
+        public function getPageIntro()
+        {
+            return null;
         }
 
         /**

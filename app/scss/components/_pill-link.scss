@@ -4,6 +4,12 @@
 // .portfolio-nav .pill-link).
 
 .pill-link {
+    // Reset native button/input chrome so this looks identical whether it's
+    // an <a>, a <button>, or an <input type="submit"> (form action buttons).
+    appearance:none;
+    -webkit-appearance:none;
+    font:inherit;
+
     display:inline-flex;
     align-items:center;
     gap:0.5rem;

@@ -1,0 +1,36 @@
+.contact-form-wrapper {
+    form {
+        .field {
+            margin-bottom:1.5rem;
+        }
+
+        label {
+            display:block;
+            margin-bottom:0.5rem;
+            font-weight:600;
+        }
+
+        .form-control-wrapper input,.form-control-wrapper textarea {
+            @extend .form-control;
+        }
+        .form-select-wrapper select {
+            @extend .form-select;
+        }
+         .field {
+            margin-bottom:.5rem;
+        }
+        label {
+            margin-bottom:.25rem;
+            font-size:.9rem;
+        }
+        .btn-toolbar {margin-top:1rem;}
+
+        // No .requiredField class is rendered on the holder in this SilverStripe
+        // version - just a native `required` attribute on the input/select/
+        // textarea itself - so :has() targets it directly instead.
+        .field:has([required]) label:after {
+            content:" *";
+            color:$brand-red;
+        }
+    }
+}

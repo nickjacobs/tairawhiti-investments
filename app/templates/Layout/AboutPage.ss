@@ -2,7 +2,7 @@
     <div class="container">
         <% if $Content %>
             <div class="page-content text-center">
-                <div class="reading-width typ mx-auto">
+                <div class="reading-width--sm typ mx-auto">
                     $Content
                 </div>
             </div>

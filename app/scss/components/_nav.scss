@@ -76,12 +76,16 @@ $nav-top-size:1rem;
         display:flex;
         flex-direction:column;
         color:white;
+        // Bootstrap's own .dropdown-item:hover/:focus sets a background via
+        // --bs-dropdown-link-hover-bg (a light grey) - override to transparent
+        // or it resurfaces on this dark dropdown menu once our own background
+        // is removed below.
         &:hover, &:focus {
-            background-color:rgba(255,255,255,0.1);
+            background-color:transparent;
             color:$brand-highlight;
         }
         &.active, &:active {
-            background-color:rgba(255,255,255,0.1);
+            background-color:transparent;
             color:$brand-highlight;
         }
     }

@@ -9,6 +9,9 @@
 
 .portfolio-section {
     margin-top:4rem;
+    // Gives jump links from .portfolio-nav some breathing room above the
+    // section instead of landing it flush against the top of the viewport.
+    scroll-margin-top:2rem;
 }
 
     // Same column/gap basis as .tile-grid (see components/_image-tiles.scss) so
@@ -44,6 +47,8 @@
         padding:2rem;
         position:relative;
         text-align:center;
+        color:white;
+
         &:after {
             display: block;
             position: absolute;
@@ -55,8 +60,14 @@
             height: 30px;
             pointer-events: none;
             content: "";
-            background: url(/images/panel-deco-top.svg) no-repeat;
-            background-size:100%;
+            color:$panel-bg;
+            background-color: currentColor; // or just rely on inherited `color`
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='214' height='37' fill='none' viewBox='0 0 214 37'%3E%3CclipPath id='a'%3E%3Cpath d='M214 0v37H0V0z'/%3E%3C/clipPath%3E%3Cg fill='%23000' clip-path='url(%23a)'%3E%3Cpath d='M188.658 19.45 230.559-14h-83.802zM-16.7-14l41.902 33.45L67.086-14z'/%3E%3Cpath d='M106.922 19.45 148.831-14H65.029z'/%3E%3C/g%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='214' height='37' fill='none' viewBox='0 0 214 37'%3E%3CclipPath id='a'%3E%3Cpath d='M214 0v37H0V0z'/%3E%3C/clipPath%3E%3Cg fill='%23000' clip-path='url(%23a)'%3E%3Cpath d='M188.658 19.45 230.559-14h-83.802zM-16.7-14l41.902 33.45L67.086-14z'/%3E%3Cpath d='M106.922 19.45 148.831-14H65.029z'/%3E%3C/g%3E%3C/svg%3E");
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-size: 100%;
+            mask-size: 100%;
         }
     }
 
@@ -75,7 +86,11 @@
             font-size:14px;
             text-transform: uppercase;
             line-height:1.1;
+            opacity:.8;
+            color:$brand-yellow;
         }
+        p{opacity:.8;}
+        p:has(.p-highlight) {opacity:1}
 
         .p-highlight {
             width:170px;
@@ -83,13 +98,13 @@
             border:8px solid $brand-blue;
             color:$brand-blue;
             border-radius:100%;
-            //background:white;
-            margin:2rem auto 1rem;
+            margin:1.5rem auto 1.5rem;
             display:flex;
             justify-content: center;
             align-items: center;
             font-size:2.8rem;
             font-weight:700;
+
         }
 
     }
@@ -101,6 +116,8 @@
                 display:flex;
                 flex-direction: column;
                 font-size:2.4rem;
+                border:8px solid $brand-red;
+                color:$brand-red;
 
             }
         }

@@ -111,6 +111,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const text2 = document.querySelector('.svg-text2');
     const text3 = document.querySelector('.svg-text3');
 
+    // .svg-texts sits next to .svg-images as a sibling inside .svg-wrapper,
+    // not inside it - pin the shared parent so the text column stays fixed
+    // alongside the images instead of scrolling away from them.
+    const pinTarget = wrapper.closest('.svg-wrapper') || wrapper;
+
     gsap.registerPlugin(ScrollTrigger);
 
     gsap.set([text1, text2, text3], { opacity: 0 });
@@ -119,11 +124,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const tl = gsap.timeline({
         defaults: { duration: 0.8, ease: 'power2.out' },
         scrollTrigger: {
-            trigger: wrapper,
-            start: 'top 80%',
-            // Restart from the beginning every time it scrolls into view,
-            // whether that's scrolling down onto it or back up onto it.
-            toggleActions: 'restart none restart none',
+            trigger: pinTarget,
+            // With pin:true, wherever this sits when the trigger fires is
+            // where it stays fixed for the whole scrub range. Pinning flush
+            // to 'top top' leaves no headroom above the wrapper, but
+            // .svg-images sits top:60px inside it and element1 moves y:-80
+            // during the split, landing 20px above the viewport's top edge
+            // (off-screen). +=100 offsets the pin down to leave enough room
+            // above for that upward shift, with a little margin to spare.
+            start: 'top top+=100',
+            // How far you have to scroll past `start` for the timeline to go
+            // from 0% to 100% complete - tune this to slow down/speed up the
+            // scrub without touching the animation steps themselves.
+            end: '+=1500',
+            // Ties timeline progress directly to scroll position instead of
+            // autoplaying; the number is a smoothing lag in seconds so it
+            // doesn't feel too mechanically 1:1 with the scrollbar.
+            scrub: 1,
+            pin: true,
         },
     });
 
