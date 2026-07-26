@@ -8,7 +8,7 @@ namespace {
 
         private static $table_name = 'AboutPage';
 
-        private static $cms_icon_class = 'font-icon-torsos-all';
+        private static $cms_icon_class = 'font-icon-book-open';
 
 
     }
