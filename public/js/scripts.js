@@ -18718,17 +18718,18 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollTrigger: {
             trigger: pinTarget,
             // With pin:true, wherever this sits when the trigger fires is
-            // where it stays fixed for the whole scrub range. Pinning flush
-            // to 'top top' leaves no headroom above the wrapper, but
-            // .svg-images sits top:60px inside it and element1 moves y:-80
-            // during the split, landing 20px above the viewport's top edge
-            // (off-screen). +=100 offsets the pin down to leave enough room
-            // above for that upward shift, with a little margin to spare.
-            start: 'top top+=100',
+            // where it stays fixed for the whole scrub range. .svg-images
+            // (the logo) is 356px tall and sits top:60px inside the wrapper,
+            // so its vertical center is 60 + 356/2 = 238px below the
+            // wrapper's own top edge. 'top+=238 50%' pins once that center
+            // point - not the wrapper's top edge - reaches the vertical
+            // middle of the viewport, and the 50% (rather than a fixed px
+            // offset) keeps it scaling with viewport height.
+            start: 'top+=238 50%',
             // How far you have to scroll past `start` for the timeline to go
             // from 0% to 100% complete - tune this to slow down/speed up the
             // scrub without touching the animation steps themselves.
-            end: '+=1500',
+            end: '+=1200',
             // Ties timeline progress directly to scroll position instead of
             // autoplaying; the number is a smoothing lag in seconds so it
             // doesn't feel too mechanically 1:1 with the scrollbar.
