@@ -10,3 +10,4 @@
 /app/.DS_Store
 /app/scss/.DS_Store
 .DS_Store
+/silverstripe.log
