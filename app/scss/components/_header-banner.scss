@@ -39,7 +39,13 @@
         .page-banner__title {
             z-index:2;
             h1 {
-                font-size: 3.4rem;
+                font-size: 3.6rem;
+
+                // Applied by main.js's SplitText reveal only when the title
+                // wraps to exactly 2 lines - highlights the second line.
+                .line--accent {
+                    color:$brand-orange;
+                }
             }
         }
 

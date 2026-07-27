@@ -93,6 +93,39 @@ $(function() {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    const bannerTitle = document.querySelector('.page-banner__title h1');
+
+    if (!bannerTitle) {
+        return;
+    }
+
+    gsap.registerPlugin(SplitText);
+
+    // `mask: 'lines'` wraps each line in its own overflow:hidden box so the
+    // yPercent slide-up reveals from behind a clean edge rather than
+    // visibly sliding in from outside the banner.
+    const titleSplit = SplitText.create(bannerTitle, { type: 'lines', mask: 'lines' });
+
+    // Only when the title wraps to exactly 2 lines - highlights the second
+    // line in the brand accent colour (see .line--accent in
+    // _header-banner.scss).
+    if (titleSplit.lines.length === 2) {
+        titleSplit.lines[1].classList.add('line--accent');
+    }
+
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1.4 } });
+    tl.from(titleSplit.lines, { yPercent: 100, opacity: 0, stagger: 0.3 });
+
+    const teReoTitle = document.querySelector('.page-banner__te-reo-title');
+
+    if (teReoTitle) {
+        const teReoSplit = SplitText.create(teReoTitle, { type: 'lines', mask: 'lines' });
+        tl.from(teReoSplit.lines, { yPercent: 100, opacity: 0, stagger: 0.3 }, '-=0.6');
+    }
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
     const wrapper = document.querySelector('.svg-images');
 
     if (!wrapper) {

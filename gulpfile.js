@@ -31,10 +31,10 @@ const paths = {
             // 'node_modules/gsap/dist/all.js',
             'node_modules/gsap/dist/gsap.js',
             'node_modules/gsap/dist/ScrollTrigger.js',
+            'node_modules/gsap/dist/SplitText.js',
             // 'node_modules/gsap/dist/DrawSVGPlugin.js',
             // 'node_modules/gsap/dist/MorphSVGPlugin.js',
             // 'node_modules/gsap/dist/CustomEase.js',
-            // 'node_modules/gsap/dist/SplitText.js',
             // App code last
             'app/js/main.js',
         ],
