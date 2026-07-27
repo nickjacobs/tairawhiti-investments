@@ -103,8 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // `mask: 'lines'` wraps each line in its own overflow:hidden box so the
     // yPercent slide-up reveals from behind a clean edge rather than
-    // visibly sliding in from outside the banner.
-    const titleSplit = SplitText.create(bannerTitle, { type: 'lines', mask: 'lines' });
+    // visibly sliding in from outside the banner. linesClass names that
+    // wrapper (as `banner-line-mask`) so _header-banner.scss can pad it
+    // out to stop descenders getting clipped.
+    const titleSplit = SplitText.create(bannerTitle, { type: 'lines', mask: 'lines', linesClass: 'banner-line' });
 
     // Only when the title wraps to exactly 2 lines - highlights the second
     // line in the brand accent colour (see .line--accent in
@@ -119,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const teReoTitle = document.querySelector('.page-banner__te-reo-title');
 
     if (teReoTitle) {
-        const teReoSplit = SplitText.create(teReoTitle, { type: 'lines', mask: 'lines' });
+        const teReoSplit = SplitText.create(teReoTitle, { type: 'lines', mask: 'lines', linesClass: 'banner-line' });
         tl.from(teReoSplit.lines, { yPercent: 100, opacity: 0, stagger: 0.3 }, '-=0.6');
     }
 });

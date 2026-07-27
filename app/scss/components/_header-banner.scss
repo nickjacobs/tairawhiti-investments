@@ -47,6 +47,16 @@
                     color:$brand-orange;
                 }
             }
+
+            // SplitText's mask:'lines' clips each line to an overflow:clip
+            // box sized tight to the line - padding-bottom gives descenders
+            // (g, y, p, j, q) room to render instead of getting cut off,
+            // with the matching negative margin cancelling the padding back
+            // out so line spacing looks unchanged.
+            .banner-line-mask {
+                padding-bottom:0.2em;
+                margin-bottom:-0.2em;
+            }
         }
 
         &:after {
