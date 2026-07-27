@@ -1,0 +1,90 @@
+// Custom skin for SilverStripe's front-end login page (silverstripe/login-forms
+// module - see app/templates/Security.ss, AppHeader.ss, Includes/AppBrand.ss).
+// Replaces the default Silverstripe-branded page with the site's own logo and
+// a full-bleed background image instead.
+
+.security-login {
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:2rem 1rem;
+    background-image:url("/images/login-bg.jpg");
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+
+    // Dark overlay for text contrast. A plain positive z-index here (rather
+    // than a negative one on the background) - body has an opaque
+    // background:white (see _global.scss), so anything placed behind it via
+    // z-index:-1 gets hidden underneath that fill instead of showing through.
+    &:after {
+        content:"";
+        position:absolute;
+        inset:0;
+        z-index:0;
+        background-image:linear-gradient(to bottom, rgba(28, 15, 51, 0.65), rgba(28, 15, 51, 0.85));
+    }
+
+    .app-brand,
+    .login-form {
+        position:relative;
+        z-index:1;
+    }
+
+    .app-brand {
+        padding:0 0 2rem;
+
+        &__logo {
+            max-width:120px;
+            max-height:200px;
+
+            svg {
+                width:100%;
+                height:auto;
+            }
+        }
+    }
+
+    .login-form {
+        width:100%;
+        max-width:440px;
+        // silverstripe/admin's bundle forces html,body{height:100%;display:flex}
+        // - guard against that leaking into the card's own sizing regardless
+        // of which exact rule is responsible.
+        height:auto;
+        flex:0 0 auto;
+        input.text,.login-form__message,.message
+        {width:100%;max-width:100%}
+
+        // Matches .pill-link's look (see components/_pill-link.scss) without
+        // @extend - .pill-link gets extended in several page-specific nested
+        // contexts (e.g. .portfolioholder .content-sidebar .pill-link), and
+        // @extend would splice this selector into all of those too, rather
+        // than just the plain top-level rule.
+        input[type="submit"] {
+            appearance:none;
+            -webkit-appearance:none;
+            font:inherit;
+            display:inline-flex;
+            align-items:center;
+            height:44px;
+            padding:0 1.5rem;
+            background:transparent;
+            border:2px solid $body;
+            border-radius:10em;
+            color:$body;
+            font-weight:bold;
+            cursor:pointer;
+            transition:background .2s $transition-ease, border-color .2s $transition-ease, color .2s $transition-ease;
+
+            &:hover {
+                background:transparent;
+                border-color:$brand-highlight!important;
+                color:$brand-highlight!important;
+            }
+        }
+    }
+}

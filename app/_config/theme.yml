@@ -5,3 +5,16 @@ SilverStripe\View\SSViewer:
   themes:
     - '$public'
     - '$default'
+
+SilverStripe\LoginForms\EnablerExtension:
+  # login-forms puts its own theme ahead of $default by default, so our
+  # app/templates/Security.ss / AppHeader.ss / Includes/AppBrand.ss overrides
+  # never get picked up. SilverStripe config merges sequential arrays by
+  # appending (no in-place replace for plain YAML lists), so this ends up
+  # merged alongside the module's own entry rather than replacing it - but
+  # since $default still lands ahead of the module's theme in the resulting
+  # list, template resolution still prefers our overrides.
+  login_themes:
+    - '$public'
+    - '$default'
+    - 'silverstripe/login-forms:login-forms'
