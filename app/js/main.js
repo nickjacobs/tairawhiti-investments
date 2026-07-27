@@ -168,13 +168,12 @@ document.addEventListener('DOMContentLoaded', () => {
             start: 'top+=238 50%',
             end: '+=1200',
             // No pin/scrub - the timeline autoplays on its own once `start`
-            // is reached. 'restart' (rather than the default 'play') means
-            // scrolling down into it always plays from the beginning again,
-            // even if it's already partway/fully played from an earlier
-            // visit; 'reset' snaps it straight back to its initial state
-            // when scrolling back up out of the top, ready to restart clean
-            // next time you scroll back down.
-            toggleActions: 'restart none none reset',
+            // is reached. Explicit callbacks (rather than a plain
+            // toggleActions string) so the reverse can run at a much higher
+            // timeScale than the forward play - a toggleActions string has
+            // no way to control playback speed.
+            onEnter: () => tl.timeScale(1).restart(),
+            onLeaveBack: () => tl.timeScale(4).reverse(),
         },
     });
 
@@ -197,25 +196,32 @@ document.addEventListener('DOMContentLoaded', () => {
         // element1/text1 stuck active since nothing before reveal1 resets it.
         .call(setActiveElement, [null, null], 'split');
 
+    // Text fades in at 1.5x the default speed (0.8s / 1.5) - reads quicker
+    // than the logo-piece opacity dimming it's paired with, which stays at
+    // the default duration.
+    const TEXT_FADE_DURATION = 0.8 / 1.5;
+
     tl.to([element2, element3], { opacity: 0.6 }, 'reveal1')
-        .to(text1, { opacity: 1 }, 'reveal1')
+        .to(text1, { opacity: 1, duration: TEXT_FADE_DURATION }, 'reveal1')
         .call(setActiveElement, [element1, text1], 'reveal1');
 
     tl.to({}, { duration: 1 });
 
     tl.to([element1, element3], { opacity: 0.6 }, 'reveal2')
         .to(element2, { opacity: 1 }, 'reveal2')
-        .to(text2, { opacity: 1 }, 'reveal2')
+        .to(text2, { opacity: 1, duration: TEXT_FADE_DURATION }, 'reveal2')
         .call(setActiveElement, [element2, text2], 'reveal2');
 
     tl.to({}, { duration: 1 });
 
     tl.to([element1, element2], { opacity: 0.6 }, 'reveal3')
         .to(element3, { opacity: 1 }, 'reveal3')
-        .to(text3, { opacity: 1 }, 'reveal3')
+        .to(text3, { opacity: 1, duration: TEXT_FADE_DURATION }, 'reveal3')
         .call(setActiveElement, [element3, text3], 'reveal3');
 
-    tl.to({}, { duration: 1 });
+    // Longer hold than the pauses above - gives the last text time to be
+    // read before the logo pieces rejoin.
+    tl.to({}, { duration: 2 });
 
     tl.to([element1, element2, element3], { y: 0, opacity: 1 }, 'converge')
         .call(setActiveElement, [null, null], 'converge');

@@ -6,13 +6,17 @@
         //background:$brand-purple;
         //color:white;
         position:relative;
-        padding-top:6rem;
+        padding-top:7rem;
         padding-bottom:4rem;
+
+        .row {
+            align-items:center;
+        }
 
         .page-content {padding:0;}
 
         .aboutpage-video {
-            padding-top:50px;
+
             &__player {
                 display:block;
                 width:100%;
