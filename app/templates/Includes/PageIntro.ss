@@ -1,7 +1,7 @@
 <% if $PageIntro %>
     <div class="container">
         <div class="page-intro">
-            $PageIntro
+            $PageIntro.PipeBr
         </div>
         <% if $LearnMoreLink || $OurStoryVideo %>
             <div class="container">
