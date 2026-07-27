@@ -30,9 +30,9 @@
             /* darken + gradient for readability, stronger at bottom */
             background: linear-gradient(
                     to bottom,
-                    rgba(0, 0, 0, 0.25) 0%,
+                    rgba(0, 0, 0, 0.15) 0%,
                     //rgba(0, 0, 0, 0.25) 60%,
-                    rgba(0, 0, 0, 0.45) 100%
+                    rgba(0, 0, 0, 0.35) 100%
             );
         }
 
