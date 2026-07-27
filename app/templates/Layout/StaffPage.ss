@@ -17,7 +17,7 @@
                             <div class="staff-tile">
                                 <div class="staff-tile__photo">
                                     <% if $Photo %>
-                                        $Photo.Fill(800,800)
+                                        $Photo.FocusFill(800,800)
                                     <% else %>
                                         <img src="/images/staff-placeholder.svg" alt="" />
                                     <% end_if %>

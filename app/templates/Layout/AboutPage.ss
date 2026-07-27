@@ -74,17 +74,17 @@
         <div class="tile-grid">
             <% if $Tile1Image %>
                 <div class="tile">
-                    $Tile1Image.Fill(600,600)
+                    $Tile1Image.FocusFill(600,600)
                 </div>
             <% end_if %>
             <% if $Tile2Image %>
                 <div class="tile">
-                    $Tile2Image.Fill(600,600)
+                    $Tile2Image.FocusFill(600,600)
                 </div>
             <% end_if %>
             <% if $Tile3Image %>
                 <div class="tile">
-                    $Tile3Image.Fill(600,600)
+                    $Tile3Image.FocusFill(600,600)
                 </div>
             <% end_if %>
         </div>

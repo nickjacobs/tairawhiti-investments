@@ -32,7 +32,7 @@
                         <div class="tile-grid">
                             <% loop $FeaturedImages.Sort('SortOrder') %>
                                 <div class="tile">
-                                    $Fill(600,600)
+                                    $FocusFill(600,600)
                                 </div>
                             <% end_loop %>
                         </div>
