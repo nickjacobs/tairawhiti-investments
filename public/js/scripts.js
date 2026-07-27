@@ -18745,28 +18745,45 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
 
+    // Marks which image/text pair is "active" (picks up its brand colour -
+    // see .svg-image--N.active / .svg-textN.active in _svg-animation.scss).
+    // A full-state set rather than +=/-= class deltas so it's deterministic
+    // scrubbing in either direction, not just playing forward.
+    const setActiveElement = (activeImage, activeText) => {
+        [element1, element2, element3].forEach((el) => el.classList.toggle('active', el === activeImage));
+        [text1, text2, text3].forEach((el) => el.classList.toggle('active', el === activeText));
+    };
+
     // .svg-image-1/.svg-image-2 overlap by ~74px at rest, and .svg-image-2/
     // .svg-image-3 overlap by ~77px - offset must clear both with room to
     // spare or the pieces still collide mid-animation.
     tl.to(element1, { y: -80 }, 'split')
-        .to(element3, { y: 100 }, 'split');
+        .to(element3, { y: 100 }, 'split')
+        // Clears any active colour when scrubbing back past reveal1 - without
+        // this, reversing past the start of the reveal sequence leaves
+        // element1/text1 stuck active since nothing before reveal1 resets it.
+        .call(setActiveElement, [null, null], 'split');
 
     tl.to([element2, element3], { opacity: 0.6 }, 'reveal1')
-        .to(text1, { opacity: 1 }, 'reveal1');
+        .to(text1, { opacity: 1 }, 'reveal1')
+        .call(setActiveElement, [element1, text1], 'reveal1');
 
     tl.to({}, { duration: 1 });
 
     tl.to([element1, element3], { opacity: 0.6 }, 'reveal2')
         .to(element2, { opacity: 1 }, 'reveal2')
-        .to(text2, { opacity: 1 }, 'reveal2');
+        .to(text2, { opacity: 1 }, 'reveal2')
+        .call(setActiveElement, [element2, text2], 'reveal2');
 
     tl.to({}, { duration: 1 });
 
     tl.to([element1, element2], { opacity: 0.6 }, 'reveal3')
         .to(element3, { opacity: 1 }, 'reveal3')
-        .to(text3, { opacity: 1 }, 'reveal3');
+        .to(text3, { opacity: 1 }, 'reveal3')
+        .call(setActiveElement, [element3, text3], 'reveal3');
 
     tl.to({}, { duration: 1 });
 
-    tl.to([element1, element2, element3], { y: 0, opacity: 1 }, 'converge');
+    tl.to([element1, element2, element3], { y: 0, opacity: 1 }, 'converge')
+        .call(setActiveElement, [null, null], 'converge');
 });

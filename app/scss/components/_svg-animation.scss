@@ -32,17 +32,39 @@
             position:absolute;
             width:270px;
             svg {top:0;}
+
+            // Only the shapes actually carrying the brand-purple fill get
+            // recoloured - other paths/groups are fill="none" (masks/
+            // reference rects from the original SVG export) and must stay
+            // untouched, so match on the literal fill value rather than a
+            // blanket `path` selector.
+            svg [fill="#{$brand-purple}"] {
+                transition:fill .3s $transition-ease;
+            }
+
             &.svg-image-1 {
                 top:0;
                 height:197px;
+
+                &.active svg [fill="#{$brand-purple}"] {
+                    fill:$brand-pink;
+                }
             }
             &.svg-image-2 {
                 top:123px;
                 height:103px;
+
+                &.active svg [fill="#{$brand-purple}"] {
+                    fill:$brand-blue;
+                }
             }
             &.svg-image-3 {
                 top:149px;
                 height:204px;
+
+                &.active svg [fill="#{$brand-purple}"] {
+                    fill:$brand-orange;
+                }
             }
 
         }
@@ -57,14 +79,30 @@
         position:absolute;
         left:0;
         font-size:16px;
+
+        h4 {
+            transition:color .3s $transition-ease;
+        }
     }
     .svg-text1 {
         top:0;
+
+        &.active h4 {
+            color:$brand-pink;
+        }
     }
     .svg-text2 {
         top:150px;
+
+        &.active h4 {
+            color:$brand-blue;
+        }
     }
     .svg-text3 {
         top:330px;
+
+        &.active h4 {
+            color:$brand-orange;
+        }
     }
 }

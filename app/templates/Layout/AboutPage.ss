@@ -33,12 +33,12 @@
             </div>
             <div class="svg-texts">
                 <div class="svg-text svg-text1">
-                    <strong>Ringa Whātoro</strong>
+                    <h4>Ringa Whātoro</h4>
                     <div>One hand represents investment today. The other represents investment inthe future. When both hands meet in the centre, they form the first part of the Hikitai logo. This symbolises unity, alignment and shared commitment.</div>
                 </div>
-                <div class="svg-text svg-text2"><strong>Mangopare - Hammerhead Shark</strong>
+                <div class="svg-text svg-text2"><h4>Mangopare - Hammerhead Shark</h4>
                     <div>In the centre is a Mangopare, this is not an ordinary hammerhead. It is a double ionic volute that represents Rangi and Papa, pressure, risk, and courage. Growth comes through courage under pressure. Those who invest must be prepared to take purposeful risk - always with our people at the centre.</div></div>
-                <div class="svg-text svg-text3"><strong>Whatitoka - Open Gateway</strong>
+                <div class="svg-text svg-text3"><h4>Whatitoka - Open Gateway</h4>
                     <div>At the base sits a gateway. Grounded in He Rangitapu He Tohu Ora, Hiki Tai Ora! It aligns directly with the gateway of Trust Tairāwhiti, yet stands as Hikitai's own doorway. This entrance is always open - signalling that our community is welcome, pathways are accessible, and opportunities are within reach.</div></div>
             </div>
         </div>
