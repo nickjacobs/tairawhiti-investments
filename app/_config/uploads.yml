@@ -11,5 +11,5 @@ Axllent\ScaledUploads\ScaledUploads:
   custom_folders:
     Banners: # custom folder path and configuration
       max_width: 2400
-      max_height: 1200
+      max_height: 2400
 
