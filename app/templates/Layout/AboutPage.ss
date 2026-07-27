@@ -1,12 +1,38 @@
 <section class="aboutpage-content">
     <div class="container">
-        <% if $Content %>
-            <div class="page-content text-center">
-                <div class="reading-width--sm typ mx-auto">
-                    $Content
+        <div class="row">
+            <div class="col-md-6">
+                <% if $Content %>
+                    <div class="page-content">
+                        <div class="typ">
+                            $Content
+                        </div>
+                    </div>
+                <% end_if %>
+            </div>
+            <div class="col-md-6">
+                <div class="aboutpage-video">
+                    <% if $AboutVideoCloudflareStreamURL %>
+                        <video
+                            class="aboutpage-video__player"
+                            preload="auto"
+                            controls
+                            playsinline
+                            data-hls-src="$AboutVideoCloudflareStreamURL"
+                            <% if $AboutVideo %>poster="$AboutVideo.URL"<% end_if %>
+                        ></video>
+                    <% else_if $AboutVideo %>
+                        <video class="aboutpage-video__player" controls playsinline>
+                            <source src="$AboutVideo.URL" type="$AboutVideo.MimeType">
+                        </video>
+                    <% else %>
+                        <div class="aboutpage-video__placeholder">
+                            <span>Video coming soon</span>
+                        </div>
+                    <% end_if %>
                 </div>
             </div>
-        <% end_if %>
+        </div>
     </div>
 </section>
 
@@ -44,6 +70,24 @@
         </div>
     </div>
 
-    <div class="spacer" style="height:200px"></div>
+    <% if $Tile1Image || $Tile2Image || $Tile3Image %>
+        <div class="tile-grid">
+            <% if $Tile1Image %>
+                <div class="tile">
+                    $Tile1Image.Fill(600,600)
+                </div>
+            <% end_if %>
+            <% if $Tile2Image %>
+                <div class="tile">
+                    $Tile2Image.Fill(600,600)
+                </div>
+            <% end_if %>
+            <% if $Tile3Image %>
+                <div class="tile">
+                    $Tile3Image.Fill(600,600)
+                </div>
+            <% end_if %>
+        </div>
+    <% end_if %>
 
 </div>

@@ -45,7 +45,7 @@
                                             <p class="staff-tile__bio">$Bio</p>
                                         <% else %>
                                             <button type="button" class="staff-tile__bio-toggle" data-bs-toggle="collapse" data-bs-target="#staff-bio-$ID" aria-expanded="false" aria-controls="staff-bio-$ID">
-                                                <span class="staff-tile__bio-toggle-icon" aria-hidden="true">+</span>
+                                                <span class="staff-tile__bio-toggle-icon" aria-hidden="true"></span>
                                                 <span class="visually-hidden">Read more about $Name</span>
                                             </button>
                                         <% end_if %>

@@ -47,7 +47,7 @@
                 height:197px;
 
                 &.active svg [fill="#{$brand-purple}"] {
-                    fill:$brand-pink;
+                    fill:$brand-blue;
                 }
             }
             &.svg-image-2 {
@@ -63,7 +63,7 @@
                 height:204px;
 
                 &.active svg [fill="#{$brand-purple}"] {
-                    fill:$brand-orange;
+                    fill:$brand-blue;
                 }
             }
 
@@ -88,7 +88,7 @@
         top:0;
 
         &.active h4 {
-            color:$brand-pink;
+            color:$brand-blue;
         }
     }
     .svg-text2 {
@@ -102,7 +102,7 @@
         top:330px;
 
         &.active h4 {
-            color:$brand-orange;
+            color:$brand-blue;
         }
     }
 }
