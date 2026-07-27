@@ -19105,19 +19105,12 @@ document.addEventListener('DOMContentLoaded', () => {
             start: 'top+=238 50%',
             end: '+=1200',
             // No pin/scrub - the timeline autoplays on its own once `start`
-            // is reached.
+            // is reached. No onLeaveBack handler - scrolling back up doesn't
+            // interrupt it, so it always runs through to completion once
+            // triggered, regardless of what the user does with scroll
+            // afterwards. Scrolling back down and re-entering still restarts
+            // it fresh via onEnter.
             onEnter: () => tl.timeScale(1).restart(),
-            // Deliberately not tl.reverse() - reversing the whole timeline
-            // also undoes the 'split'/'converge' y-position tweens, which
-            // means scrolling back up while the logo is already joined would
-            // visibly re-split the pieces apart before settling. Instead
-            // just fade the text/dimming/active-colour state back out and
-            // leave the logo pieces' position alone.
-            onLeaveBack: () => {
-                gsap.to([text1, text2, text3], { opacity: 0, duration: 0.3 });
-                gsap.to([element1, element2, element3], { opacity: 1, duration: 0.3 });
-                setActiveElement(null, null);
-            },
         },
     });
 
