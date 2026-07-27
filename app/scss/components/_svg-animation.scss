@@ -1,4 +1,15 @@
 
+// GSAP pins .tohu-pin as a whole (see main.js) - without this, the top
+// margins of .tohu-text/.svg-wrapper collapse through .tohu-pin in normal
+// flow, but that collapse isn't reproduced identically once GSAP measures
+// and pins the wrapper, causing it to jump to a slightly different position
+// the instant the pin engages. flow-root gives .tohu-pin its own block
+// formatting context so those margins stay contained instead of collapsing
+// through it.
+.tohu-pin {
+    display:flow-root;
+}
+
 .tohu-text {
     margin-top:6rem;
 }

@@ -18708,6 +18708,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // alongside the images instead of scrolling away from them.
     const pinTarget = wrapper.closest('.svg-wrapper') || wrapper;
 
+    // .tohu-text (the "The Hikitai tohu" heading) sits above .svg-wrapper
+    // inside a shared .tohu-pin wrapper - pin that wrapper instead of just
+    // .svg-wrapper so the heading stays fixed on screen too, while the
+    // trigger/start offset below stays tied to .svg-wrapper (and therefore
+    // the logo's position) unchanged.
+    const pinWrapper = pinTarget.closest('.tohu-pin') || pinTarget;
+
     gsap.registerPlugin(ScrollTrigger);
 
     gsap.set([text1, text2, text3], { opacity: 0 });
@@ -18734,7 +18741,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // autoplaying; the number is a smoothing lag in seconds so it
             // doesn't feel too mechanically 1:1 with the scrollbar.
             scrub: 1,
-            pin: true,
+            pin: pinWrapper,
         },
     });
 
