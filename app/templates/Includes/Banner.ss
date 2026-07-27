@@ -15,7 +15,7 @@
             loop
             playsinline
             data-hls-src="$BannerCloudflareStreamURL"
-            <% if $BannerImage %>poster="$BannerImage.FocusFill(2000,600).URL"<% end_if %>
+            <% if $BannerImage %>poster="$BannerImage.FocusFill(2400,800).URL"<% end_if %>
         ></video>
     <% else_if $BannerVideo %>
         <video
@@ -24,7 +24,7 @@
             muted
             loop
             playsinline
-            <% if $BannerImage %>poster="$BannerImage.FocusFill(2000,600).URL"<% end_if %>
+            <% if $BannerImage %>poster="$BannerImage.FocusFill(2400,800).URL"<% end_if %>
         >
             <source src="$BannerVideo.URL" type="$BannerVideo.MimeType">
         </video>
