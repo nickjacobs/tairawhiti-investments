@@ -3,6 +3,7 @@
 namespace {
 
     use SilverStripe\Control\Email\Email;
+    use SilverStripe\Control\Middleware\HTTPCacheControlMiddleware;
     use SilverStripe\Forms\DropdownField;
     use SilverStripe\Forms\EmailField;
     use SilverStripe\Forms\FieldList;
@@ -21,6 +22,16 @@ namespace {
         private static $allowed_actions = [
             'ContactForm',
         ];
+
+        protected function init()
+        {
+            parent::init();
+
+            // ContactForm's CSRF token is tied to the visitor's session -
+            // publicly caching this page would serve one visitor's token to
+            // everyone else, breaking their form submission.
+            HTTPCacheControlMiddleware::singleton()->disableCache(true);
+        }
 
         /**
          * Where enquiry emails are sent - override in app/_config/app.yml, e.g:
