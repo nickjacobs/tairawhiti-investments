@@ -32,10 +32,11 @@
     box-shadow:$box-shadow;
     overflow:hidden;
     text-align:left;
-    padding:1.5rem;
+
+
 
     &__photo {
-        margin:-1.5rem -1.5rem 1rem;
+        margin:-1.5rem -1.5rem 0;
 
         img {
             width:100%;
@@ -50,6 +51,9 @@
         grid-row:span 2;
         color:white;
     }
+
+    &__header {position:relative;padding: .5rem 1.5rem 2rem;}
+
 
     h3 {
         margin-bottom:0.5rem;
@@ -105,6 +109,8 @@
     }
 
     &__bio-toggle {
+        position:absolute;
+        bottom:-.5rem;
         display:inline-flex;
         align-items:center;
         margin-top:0;
@@ -146,46 +152,22 @@
         text-align:left;
         margin-top:0.5rem;
     }
-}
 
-.staff-row-bio {
-    // Positioned out of normal flow so it overlays whatever sits below it in the
-    // grid, instead of pushing it down - nothing in the page's layout height
-    // changes when it opens/closes, so there's nothing to jump.
-    position:absolute;
-    left:0;
-    right:0;
-    z-index:5;
-    background:$brand-purple;
-    color:white;
-    text-align:left;
-    box-shadow:$box-shadow;
+    &__bio__wrapper {
 
-    // Points back up at whichever tile was clicked - JS sets --staff-bio-arrow-left
-    // to that tile's horizontal center. Height must match STAFF_BIO_GAP in
-    // main.js so the tip reaches all the way up to touch the tile above -
-    // width can differ, purely visual.
-    $triangle-size:20px;
-
-    &:before {
-        content:'';
-        position:absolute;
-        top:-$triangle-size;
-        left:var(--staff-bio-arrow-left, 50%);
-        transform:translateX(-50%);
-        width:0;
-        height:0;
-        border-left:$triangle-size solid transparent;
-        border-right:$triangle-size solid transparent;
-        border-bottom:$triangle-size solid $brand-purple;
-        // box-shadow would shadow the invisible 0x0 box this triangle is built
-        // from rather than its visible shape, so use drop-shadow instead - same
-        // values as $box-shadow (its spread is 0, so nothing is lost).
-        filter:drop-shadow(0px 0px 30px rgba(115, 115, 106, 0.25));
+        &.white--bg {
+            background:white;
+            color:$body;
+        }
     }
 
-    &__inner {
-        padding:2rem;
+    // Bio now lives inline inside the card (a normal Bootstrap .collapse),
+    // rather than an absolutely-positioned overlay below the row - all bios
+    // in a block share one data-bs-target class (see StaffPage.ss) so
+    // clicking any toggle opens/closes every card in that block together.
+    &__bio-inner {
+        padding:1.5rem;
+        padding-top:1rem;
     }
 }
 
@@ -212,8 +194,16 @@
             }
         }
 
+        &__header {
+            padding-bottom:0;
+        }
+
         &__body {
             flex:1;
+        }
+
+        &__bio {
+            padding:0 1.5rem 1.5rem;
         }
 
         @media only screen and (max-width:480px) {

@@ -27,7 +27,6 @@
                                         <h3>$Name</h3>
                                         <% if $Affiliation %><p class="staff-tile__affiliation">$Affiliation</p><% end_if %>
                                         <% if $JobTitle %><p class="staff-tile__job-title">$JobTitle</p><% end_if %>
-
                                         <% if $Email %>
                                             <p class="staff-tile__email">
                                                 <a href="mailto:$Email">
@@ -37,30 +36,30 @@
                                                 </a>
                                             </p>
                                         <% end_if %>
-
-                                    </div>
-
-                                    <% if $Bio %>
-                                        <% if $Up.Layout == 'Horizontal' %>
-                                            <p class="staff-tile__bio">$Bio</p>
-                                        <% else %>
-                                            <button type="button" class="staff-tile__bio-toggle" data-bs-toggle="collapse" data-bs-target="#staff-bio-$ID" aria-expanded="false" aria-controls="staff-bio-$ID">
+                                        <% if $Up.Layout != 'Horizontal' %>
+                                            <button type="button" class="staff-tile__bio-toggle" data-bs-toggle="collapse" data-bs-target=".staff-bio-collapse-{$Up.ID}" aria-expanded="false">
                                                 <span class="staff-tile__bio-toggle-icon" aria-hidden="true"></span>
                                                 <span class="visually-hidden">Read more about $Name</span>
                                             </button>
                                         <% end_if %>
+
+                                    </div>
+
+                                    <% if $Bio %>
+                                        <div class="staff-tile__bio__wrapper  <% if $Up.Layout != 'Horizontal' %>white--bg<% end_if %>">
+                                        <% if $Up.Layout == 'Horizontal' %>
+                                            <div class="staff-tile__bio">$Bio</div>
+                                        <% else %>
+                                            <div class="collapse staff-bio-collapse-{$Up.ID} staff-tile__bio">
+                                                <div class="staff-tile__bio-inner">
+                                                    $Bio
+                                                </div>
+                                            </div>
+                                        <% end_if %>
+                                    </div>
                                     <% end_if %>
                                 </div>
                             </div>
-                            <% if $Bio && $Up.Layout != 'Horizontal' %>
-                                <div class="collapse staff-row-bio" id="staff-bio-$ID">
-                                    <div class="staff-row-bio__inner">
-                                        <div class="reading-width">
-                                            $Bio
-                                        </div>
-                                    </div>
-                                </div>
-                            <% end_if %>
                         <% end_loop %>
                     </div>
                 <% end_if %>
