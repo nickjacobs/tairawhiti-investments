@@ -26,7 +26,7 @@ $nav-top-size:1rem;
             color:white;
             display:flex;
             flex-direction:column;
-            transition: color .4s $transition-ease;
+            transition: color .3s $transition-ease;
             &.top-level {
                 font-weight:600;
             }
@@ -38,6 +38,15 @@ $nav-top-size:1rem;
             &:hover {
                 color:$brand-highlight;
             }
+        }
+
+        // Keeps the top-level link orange while hovering its dropdown-menu -
+        // plain .nav-link:hover alone loses :hover as soon as the cursor
+        // leaves the link itself and moves down into the (sibling) menu.
+        // .dropdown is the shared ancestor of both, so it stays hovered the
+        // whole time the cursor is anywhere inside either.
+        .dropdown:hover > .nav-link {
+            color:$brand-highlight;
         }
     }
     .nav-link-tereo {
@@ -76,6 +85,7 @@ $nav-top-size:1rem;
         display:flex;
         flex-direction:column;
         color:white;
+        transition: color .2s $transition-ease;
         // Bootstrap's own .dropdown-item:hover/:focus sets a background via
         // --bs-dropdown-link-hover-bg (a light grey) - override to transparent
         // or it resurfaces on this dark dropdown menu once our own background
