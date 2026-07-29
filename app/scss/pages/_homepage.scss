@@ -1,35 +1,50 @@
 
 .homepage {
     .tiles-intro {
-        margin:0 auto;
-        font-size:1.3rem;
-        max-width:980px;
+        margin: 0 auto;
+        max-width: 980px;
+
         h3 {
-           font-size:2.2rem;
-            margin-bottom:20px;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
         }
+
         a {
-            text-decoration:none;
+            text-decoration: none;
         }
     }
-}
+    .page-intro__links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 2rem 0;
 
-.page-intro__links {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:1rem;
-    margin:2rem 0;
-}
+        @media only screen and (max-width:991.98px) {
+            .pill-link,
+            .video-trigger {
+                min-width:210px;
+            }
+        }
 
-// Page-specific overrides layered on top of the shared .pill-link component.
-.tiles-intro__link {
-    margin:20px 0;
-    border-color:$body;
-    color:$body;
-    font-size:1.15rem;
-}
+    }
 
+    // Page-specific overrides layered on top of the shared .pill-link component.
+    .tiles-intro__link {
+        margin: 20px 0;
+        border-color: $body;
+        color: $body;
+        font-size: 1.15rem;
+    }
+
+    @media (max-width:991.98px) {
+        .page-layout .tile-grid {
+            margin:3rem 0;
+        }
+    }
+
+
+}
 
 

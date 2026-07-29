@@ -18,7 +18,7 @@ namespace {
         private static $db = [
             'TeReoTitle' => 'Varchar',
             'BannerTitle' => 'Varchar(255)',
-            'BannerTeReoTitle' => 'Varchar(255)',
+            'BannerTitle2' => 'Varchar(255)',
             'BannerCloudflareVideoID' => 'Varchar(32)',
             'PageIntro' => 'HTMLText'
         ];
@@ -53,8 +53,7 @@ namespace {
             $fields->addFieldsToTab('Root.Banner', [
                 TextField::create('BannerTitle', 'Banner title')
                     ->setDescription('If left blank, the page title will be used'),
-                TextField::create('BannerTeReoTitle', 'Banner Te Reo title')
-                    ->setDescription('If left blank, the page\'s Te Reo name will be used'),
+                TextField::create('BannerTitle2', 'Banner title line 2'),
                 UploadField::create('BannerImage', 'Banner background image')->setFolderName('Banners'),
                 UploadField::create('BannerVideo', 'Banner background video')
                     ->setFolderName('Banners')

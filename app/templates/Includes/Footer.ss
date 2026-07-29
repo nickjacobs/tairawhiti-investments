@@ -1,14 +1,14 @@
 <div class="footer">
     <div class="container">
         <div class="row top-row">
-            <div class="col-md-5">
+            <div class="col-5">
                 <div class="footer-logo">
                     <a href="/">
                         <% include FooterLogo %>
                     </a>
             </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-7">
                 <div class="footer-menus">
                     <ul class="list-unstyled list-inline d-flex gap-5">
                         <% loop Menu(1) %>

@@ -7,6 +7,12 @@
         grid-column:span 1;
     }
 
+    @media only screen and (max-width:768px) {
+        .content-column {
+            grid-column:span 2;
+        }
+    }
+
     .details-panel {padding-top:3rem;}
 
     .details-panel__body {

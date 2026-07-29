@@ -32,6 +32,6 @@
     <div class="banner__overlay"></div>
     <div class="page-banner__title">
         <h1>$BannerTitleForDisplay.PipeBr</h1>
-        <% if $BannerTeReoTitle %><div class="page-banner__te-reo-title">$BannerTeReoTitle.PipeBr</div><% end_if %>
+        <% if $BannerTitle2 %><div class="page-banner__title2">$BannerTitle2.PipeBr</div><% end_if %>
     </div>
 </div>

@@ -25,6 +25,14 @@
 .content-sidebar {
     grid-column:span 1;
     text-align:center;
+
+    // Spans the same 2 columns as .content-column so it drops to its own
+    // full-width row at the same tablet/mobile breakpoint as the rest of
+    // the site, rather than staying cramped into 1/3 width until .content-row
+    // fully collapses to a single column at 768px.
+    @media only screen and (max-width:991.98px) {
+        grid-column:span 2;
+    }
 }
 
 .details-panel {
@@ -37,7 +45,7 @@
     &:after {
         display: block;
         position: absolute;
-        bottom: -30px;
+        bottom: -29px;
         right:10%;
         //left: 50%;
         //transform: translateX(-50%);

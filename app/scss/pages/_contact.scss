@@ -1,6 +1,11 @@
 .contact-container {
     max-width:940px;
 
+    .contact-form-wrapper {
+        @media only screen and (max-width:991.98px) {
+            margin-top:2rem;
+        }
+    }
 
     .cf-turnstile {
         margin-top:12px;
@@ -31,5 +36,15 @@
             color:$brand-red;
         }
     }
+
+    .typ p{
+        @media only screen and (max-width:991.98px) {
+           font-size:1.1rem;
+        }
+    }
+
+
+
+
 
 }

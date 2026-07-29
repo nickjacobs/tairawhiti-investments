@@ -1,5 +1,12 @@
 .header-banner {
     position:relative;
+    background-color: $brand-purple;
+    padding:1rem 2rem 2rem;
+
+    @media only screen and (max-width:991.98px) {
+        padding:1rem 1rem 1.5rem;
+    }
+
     .page-banner {
         min-height: $banner-height;
         text-align: center;
@@ -38,14 +45,21 @@
 
         .page-banner__title {
             z-index:2;
-            h1 {
+            h1,.page-banner__title2 {
                 font-size: 3.6rem;
+                line-height:1;
+                font-weight:800;
 
-                // Applied by main.js's SplitText reveal only when the title
-                // wraps to exactly 2 lines - highlights the second line.
-                .line--accent {
-                    color:$brand-orange;
+                @media only screen and (max-width:991.98px) {
+                    font-size: 2.2rem;
                 }
+            }
+
+            // Applied by main.js's SplitText reveal to BannerTitle2 (rendered
+            // as .page-banner__te-reo-title below) when it's present - scoped
+            // here rather than inside h1 so it reaches that sibling element too.
+            .line--accent {
+                color:$brand-orange;
             }
 
             // SplitText's mask:'lines' clips each line to an overflow:clip
@@ -71,6 +85,10 @@
             background: url(/images/border-deco.svg) no-repeat ;
             background-position:center;
         }
+
+        @media only screen and (max-width:991.98px) {
+            min-height:$mobile-banner-height;
+        }
     }
 
     .page-intro {
@@ -86,13 +104,18 @@
             color:$brand-highlight;
             text-decoration: none;
         }
+
+        @media only screen and (max-width:991.98px) {
+            padding-top:2.5rem;
+            font-size:1.4rem;
+        }
     }
 
     &:after {
         display: block;
         position: absolute;
-        bottom: -36px;
-        right: 60px;
+        bottom: -35px;
+        right: 10%;
         z-index: 10;
         width: 214px;
         height: 37px;

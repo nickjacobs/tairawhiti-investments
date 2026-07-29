@@ -8,7 +8,10 @@
     gap:2rem;
     margin:3rem 0;
 
-    @media only screen and (max-width:768px) {
+    // Stays 3-across through tablet widths - only drops to a single column
+    // on phone-sized screens (matches _responsive.scss's "Extra Small
+    // Devices, Phones" cutoff).
+    @media only screen and (max-width:480px) {
         grid-template-columns:1fr;
     }
 }

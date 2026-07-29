@@ -105,4 +105,30 @@
             color:$brand-blue;
         }
     }
+
+    // Below 900px the split/reveal/converge animation doesn't run at all
+    // (see main.js's gsap.matchMedia) - lay everything out as a plain static
+    // stack instead: the assembled logo (still formed the same way, via the
+    // .svg-image pieces' own top offsets above - nothing moves them apart
+    // without the animation) followed by all three text blocks in normal
+    // document flow rather than absolutely positioned/overlapping.
+    @media only screen and (max-width:899.98px) {
+        flex-direction:column;
+        align-items:center;
+        width:100%;
+        height:auto;
+        gap:2rem;
+        margin-bottom:2rem;
+
+        .svg-images {top:-20px;}
+
+        .svg-texts {
+            width:100%;
+        }
+
+        .svg-text {
+            position:static;
+            padding:0 0 1.5rem;
+        }
+    }
 }
