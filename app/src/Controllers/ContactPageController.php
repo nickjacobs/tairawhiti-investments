@@ -34,13 +34,16 @@ namespace {
         }
 
         /**
-         * Where enquiry emails are sent - override in app/_config/app.yml, e.g:
+         * Where enquiry emails are sent, and the display name they're sent
+         * from - set in app/_config/app.yml:
          *
          * ContactPageController:
          *   recipient_email: 'enquiries@example.com'
+         *   sender_name: 'Example Trust'
          */
-        private static $recipient_email = 'info@tairawhitiinvestments.nz';
+        private static $recipient_email;
 
+        private static $sender_name;
 
         private static $enquiry_types = [
             'General enquiry' => 'General enquiry',
@@ -87,9 +90,9 @@ namespace {
             $recipient = $this->config()->get('recipient_email');
 
             Email::create()
-                ->setFrom($recipient)
+                ->setFrom($recipient, $this->config()->get('sender_name'))
                 ->setTo($recipient)
-                ->setReplyTo($data['Email'])
+                ->setReplyTo($data['Email'], sprintf('%s %s', $data['FirstName'], $data['LastName']))
                 ->setSubject(sprintf('New enquiry from %s %s', $data['FirstName'], $data['LastName']))
                 ->setHTMLTemplate('Email/ContactEnquiry')
                 ->setData([

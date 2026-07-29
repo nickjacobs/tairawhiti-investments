@@ -4,3 +4,7 @@ Name: myproject
 SilverStripe\Core\Manifest\ModuleManifest:
   project: app
 
+ContactPageController:
+  recipient_email: 'info@tairawhitiinvestments.nz'
+  sender_name: 'Tairāwhiti Investments'
+
