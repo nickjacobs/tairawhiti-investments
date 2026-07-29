@@ -34,16 +34,19 @@ namespace {
         }
 
         /**
-         * Where enquiry emails are sent, and the display name they're sent
-         * from - set in app/_config/app.yml:
+         * Where enquiry emails are sent, the display name they're sent from,
+         * and an optional extra address to BCC - set in app/_config/app.yml:
          *
          * ContactPageController:
          *   recipient_email: 'enquiries@example.com'
          *   sender_name: 'Example Trust'
+         *   bcc_email: 'archive@example.com'
          */
         private static $recipient_email;
 
         private static $sender_name;
+
+        private static $bcc_email;
 
         private static $enquiry_types = [
             'General enquiry' => 'General enquiry',
@@ -88,8 +91,9 @@ namespace {
         public function doSubmitContactForm(array $data, Form $form)
         {
             $recipient = $this->config()->get('recipient_email');
+            $bcc = $this->config()->get('bcc_email');
 
-            Email::create()
+            $email = Email::create()
                 ->setFrom($recipient, $this->config()->get('sender_name'))
                 ->setTo($recipient)
                 ->setReplyTo($data['Email'], sprintf('%s %s', $data['FirstName'], $data['LastName']))
@@ -104,8 +108,13 @@ namespace {
                     // in the template, rather than relying on template-level
                     // casting of a plain array value.
                     'Message' => nl2br(htmlspecialchars($data['Message'])),
-                ])
-                ->send();
+                ]);
+
+            if ($bcc) {
+                $email->setBCC($bcc);
+            }
+
+            $email->send();
 
             $form->sessionMessage('Thanks for getting in touch - we\'ll be in contact soon.', 'good');
 
