@@ -7,5 +7,29 @@
 
     }
 
+    // Form-level status message (success/error) - see SilverStripe's own
+    // Includes/Form.ss, which renders #Form_ContactForm_error with class
+    // "message" plus a type class (.good on success, .bad/.required on
+    // validation errors e.g. missing fields or a failed Turnstile check).
+    .message {
+        padding:1rem 1.25rem;
+        margin-bottom:1.5rem;
+        border-radius:8px;
+        font-weight: 400;
+        font-size: 1rem;
+
+        &.good {
+            background:rgba(40, 167, 69, 0.1);
+            border:1px solid #28a745;
+            color:#1e7e34;
+        }
+
+        &.bad,
+        &.required {
+            background:rgba($brand-red, 0.1);
+            border:1px solid $brand-red;
+            color:$brand-red;
+        }
+    }
 
 }

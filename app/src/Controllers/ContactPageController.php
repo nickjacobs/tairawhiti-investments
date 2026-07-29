@@ -39,8 +39,8 @@ namespace {
          * ContactPageController:
          *   recipient_email: 'enquiries@example.com'
          */
-        //private static $recipient_email = 'info@tairawhitiinvestments.nz';
-        private static $recipient_email = 'nick@nfx.nz';
+        private static $recipient_email = 'info@tairawhitiinvestments.nz';
+
 
         private static $enquiry_types = [
             'General enquiry' => 'General enquiry',
@@ -86,21 +86,22 @@ namespace {
         {
             $recipient = $this->config()->get('recipient_email');
 
-            $body = sprintf(
-                "New enquiry from %s %s\nEmail: %s\nType: %s\n\n%s",
-                $data['FirstName'],
-                $data['LastName'],
-                $data['Email'],
-                $data['EnquiryType'],
-                $data['Message']
-            );
-
             Email::create()
                 ->setFrom($recipient)
                 ->setTo($recipient)
                 ->setReplyTo($data['Email'])
                 ->setSubject(sprintf('New enquiry from %s %s', $data['FirstName'], $data['LastName']))
-                ->setBody(nl2br(htmlspecialchars($body)))
+                ->setHTMLTemplate('Email/ContactEnquiry')
+                ->setData([
+                    'FirstName' => $data['FirstName'],
+                    'LastName' => $data['LastName'],
+                    'Email' => $data['Email'],
+                    'EnquiryType' => $data['EnquiryType'],
+                    // Pre-escaped/formatted here and output with $Message.RAW
+                    // in the template, rather than relying on template-level
+                    // casting of a plain array value.
+                    'Message' => nl2br(htmlspecialchars($data['Message'])),
+                ])
                 ->send();
 
             $form->sessionMessage('Thanks for getting in touch - we\'ll be in contact soon.', 'good');
