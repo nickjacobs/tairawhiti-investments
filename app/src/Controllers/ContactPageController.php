@@ -61,7 +61,8 @@ namespace {
                     ->addExtraClass('form-select-wrapper'),
                 TextareaField::create('Message', 'Your enquiry')
                     ->setRows(3)
-                    ->addExtraClass('form-control-wrapper')
+                    ->addExtraClass('form-control-wrapper'),
+                TurnstileField::create('Turnstile', '')
             );
 
             $validator = RequiredFieldsValidator::create([
