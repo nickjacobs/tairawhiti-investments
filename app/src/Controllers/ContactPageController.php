@@ -39,7 +39,8 @@ namespace {
          * ContactPageController:
          *   recipient_email: 'enquiries@example.com'
          */
-        private static $recipient_email = 'info@tairawhitiinvestments.nz';
+        //private static $recipient_email = 'info@tairawhitiinvestments.nz';
+        private static $recipient_email = 'nick@nfx.nz';
 
         private static $enquiry_types = [
             'General enquiry' => 'General enquiry',
