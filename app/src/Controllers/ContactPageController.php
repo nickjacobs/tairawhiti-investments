@@ -90,11 +90,13 @@ namespace {
 
         public function doSubmitContactForm(array $data, Form $form)
         {
+            $from_email = $this->config()->get('from_email');
+            $from_name = $this->config()->get('from_name');
             $recipient = $this->config()->get('recipient_email');
             $bcc = $this->config()->get('bcc_email');
 
             $email = Email::create()
-                ->setFrom($recipient, $this->config()->get('sender_name'))
+                ->setFrom($from_email, $from_name)
                 ->setTo($recipient)
                 ->setReplyTo($data['Email'], sprintf('%s %s', $data['FirstName'], $data['LastName']))
                 ->setSubject(sprintf('New enquiry from %s %s', $data['FirstName'], $data['LastName']))

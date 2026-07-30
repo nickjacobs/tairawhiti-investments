@@ -5,6 +5,7 @@ SilverStripe\Core\Manifest\ModuleManifest:
   project: app
 
 ContactPageController:
-  recipient_email: 'info@tairawhitiinvestments.nz'
-  sender_name: 'Tairāwhiti Investments'
+  from_email: 'website@tairawhitiinvestments.nz'
+  from_name: 'Tairāwhiti Investments'
+  recipient_email: 'website@tairawhitiinvestments.nz'
   bcc_email: 'nick@nfx.nz'

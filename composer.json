@@ -13,7 +13,9 @@
         "axllent/silverstripe-scaled-uploads": "^2.3",
         "jonom/focuspoint": "^6.0",
         "silverstripe/linkfield": "^5.2",
-        "bummzack/sortablefile": "^3.0"
+        "bummzack/sortablefile": "^3.0",
+        "symfony/postmark-mailer": "^8.1",
+        "symfony/http-client": "^8.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^11.3"
